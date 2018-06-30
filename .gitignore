@@ -1,0 +1,14 @@
+/*
+/*/
+
+!.gitignore
+!/.config/
+/.config/*
+!/.config/redshift.conf
+!/.config/i3/
+!/.bin
+!.zshrc
+!.zshenv
+!/.Pycharm*/
+!/.oh-my-zsh
+
