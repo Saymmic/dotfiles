@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/saymon/.oh-my-zsh
+export ZSH=/home/saymmic/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -65,7 +65,7 @@ POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colorize cp zsh-syntax-highlighting encode64 extract)
+plugins=(git colorize cp zsh-syntax-highlighting encode64 extract django docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,16 +99,13 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"sudo apt install python3-flake8
 
 # virtualenv
-export WORKON_HOME=~/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+#export WORKON_HOME=~/.virtualenvs
+#export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+#source /usr/local/bin/virtualenvwrapper.sh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export EDITOR=vim
-
-alias i3conf="vim ~/.config/i3/config"
-alias m="./manage.py"
-alias xclipc='xclip -selection c'
 

@@ -1,0 +1,124 @@
+/*
+ * ROFI color theme
+ *
+ * User: Michal
+ * Copyright: Michal Simonienko
+ */
+
+* {
+	white: #FFFFFF;
+	black: #000000;
+	red:   #FF0000;
+	blue:  #0000FF;
+	grey:  #E0E0E0;
+
+	spacing: 0;
+	background-color: transparent;
+
+	font: "InconsolataGo 13";
+}
+
+window {
+	transparency: "real";
+	/*fullscreen: true;*/
+	background-color: #000000CC;
+}
+
+mainbox {
+	children: [inputbar, message, sidebar, listview];
+	spacing: 30px;
+	/*margin: 20%;*/
+	padding: 30px 0;
+	border: 1px;
+	border-color: @white;
+}
+
+inputbar {
+	padding: 0 30px;
+	children: [prompt, textbox-prompt-colon, entry, case-indicator];
+}
+
+prompt {
+	text-color: @white;
+}
+
+textbox-prompt-colon {
+	expand: false;
+	str: ":";
+	margin: 0 1ch 0 0;
+	text-color: @white;
+}
+
+entry {
+	text-color: @white;
+}
+
+case-indicator {
+	text-color: @white;
+}
+
+sidebar, message {
+	border: 1px 0;
+	border-color: @white;
+}
+
+button, textbox {
+	background-color: @white;
+	text-color: @black;
+	padding: 5px;
+}
+
+button selected {
+	background-color: @white;
+}
+
+listview {
+	scrollbar: true;
+	margin: 0 10px 0 30px;
+}
+
+scrollbar {
+	background-color: @white;
+	handle-color: @black;
+	handle-width: 10px;
+	border: 1 1px;
+	border-color: @white;
+	margin: 0 0 0 20px;
+}
+
+element {
+	padding: 5px;
+	highlight: bold underline;
+}
+
+element normal {
+	background-color: transparent;
+}
+
+element selected {
+	background-color: @white;
+}
+
+element alternate {
+	/*background-color: @white;*/
+}
+
+element selected normal {
+	text-color: @black;
+}
+
+element alternate normal {
+	text-color: @white;
+}
+
+element normal normal{
+	text-color: @white;
+}
+
+element normal urgent, element selected urgent, element alternate urgent {
+	text-color: @white;
+}
+
+element normal active, element selected active, element alternate active {
+	text-color: @black;
+}

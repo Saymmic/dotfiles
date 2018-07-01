@@ -1,0 +1,24 @@
+echo -n "\
+¯\\\_(ツ)_/¯
+michal.simonienko@protonmail.com
+yqhsms@gmail.com
+yqhsms2d@gmail.com
+michal.simonienko@iiit.pl
+franksdarkin@gmail.com
+----
+510676468
+8461665635
+87 1090 2789 0000 0001 2379 1267
+95 1090 2590 0000 0001 3229 4065
+16-300 Augustów, Przemysłowa 1b/6
+01-886 Warszawa, Zofii Nałkowskiej 5/58
+----
+./manage.py test --db-template=/scripts/CI/test_db_template.sql --noinput
+python manage.py test --db-template ./scripts/test_db_template.sql
+isort --recursive --settings-path config
+----
+" | egrep -v "^#|^$"
+date +%H:%M
+date +%Y.%m.%d
+date "+%d.%m.%Y %H:%M:%S"
+
