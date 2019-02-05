@@ -10,6 +10,8 @@ export ZSH=/home/saymmic/.oh-my-zsh
 #ZSH_THEME="spaceship"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
+POWERLEVEL9K_MODE='awesome-fontconfig'
+POWERLEVEL9K_SHOW_CHANGESET=true
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vcs time)
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(virtualenv context dir)
