@@ -25,6 +25,9 @@ sudo apt update && sudo apt install -y \
 	ack \
 	vim \
 	tig \
+	fonts-font-awesome\
+	xclip \
+	python3-pyqt5 
 
 # Install oh-my-zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
@@ -50,3 +53,7 @@ fc-cache -vf ~/.local/share/fonts/
 mkdir ~/.config/fontconfig/
 mkdir ~/.config/fontconfig/conf.d/
 mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
+
+git clone https://github.com/SuperPrower/i3lock-fancier.git
+cd i3lock-fancier
+sudo make install

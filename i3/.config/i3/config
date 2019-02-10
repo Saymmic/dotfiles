@@ -189,8 +189,6 @@ exec_always feh --bg-center --no-xinerama $WALLPAPER
 # SHORTCUTS
 bindsym $mod+x exec i3lock -i $LOCK_WALLPAPER
 bindsym $mod+Shift+x exec i3lock -i $LOCK_WALLPAPER && systemctl suspend	# Lock screen and suspend
-bindsym $mod+Shift+o exec reboot						                    # Reboot
-bindsym $mod+Shift+p exec poweroff						                    # Poweroff
 bindsym $mod+d exec rofi -show drun						                    # Rofi app launcher
 
 bindsym $mod+Shift+Return exec gnome-terminal --window-with-profile=day		# Day terminal (white)
@@ -224,6 +222,10 @@ bindsym $mod+bracketleft move workspace to output left
 # Auto input
 bindsym $mod+y exec --no-startup-id bash ~/.config/i3/dmenu.personal | rofi -dmenu -i -matching fuzzy -p type | xargs echo -n | xargs -0 xdotool getactivewindow type --delay 80
 
+# Snippets
+bindsym $mod+Shift+o exec --no-startup-id rofi -dmenu -lines 0 -p name | xargs -I{} echo ~/.config/snippets/{} | xargs -0 gedit
+bindsym $mod+o exec ls ~/.config/snippets | rofi -dmenu -i -matching fuzzy -p type | xargs -I{} cat ~/.config/snippets/{} | copyq copy -
+bindsym $mod+p exec copyq toggle
 
 # Autostart
 exec dropbox
