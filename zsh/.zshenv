@@ -149,6 +149,7 @@ alias dc="docker-compose"
 alias dk="docker"
 alias dksa="docker stop \$(docker ps -aq)"
 alias dcu="docker-compose up -d"
+alias dcl="docker-compose logs --tail 3000 -f | lh"
 
 # git
 function grho {
@@ -166,20 +167,34 @@ alias aw="cd $PROJECTS_PATH/lead-manager/action-workflow"
 alias lg="cd $PROJECTS_PATH/lead-manager/lead-generator"
 alias ling="cd $PROJECTS_PATH/lingfluent"
 alias mega="cd $PROJECTS_PATH/megadictionary"
+alias rtfn="cd $PROJECTS_PATH/rtfn"
 
+function agrt {
+    ag $1 $PROJECTS_PATH/rtfn
+}
+
+# Bash
 alias cmbb="(cd $PROJECTS_PATH/call-manager;docker-compose exec backend /bin/bash)"
 alias sokbb="(cd $PROJECTS_PATH/sok;docker-compose exec backend /bin/bash)"
 alias cmfb="(cd $PROJECTS_PATH/call-manager;docker-compose exec frontend /bin/bash)"
 
+# Shell
 alias cmshell="(cd $PROJECTS_PATH/call-manager;docker-compose exec backend /bin/bash -c 'cd backend; ./manage.py shell_plus --print-sql')"
 alias sokshell="(cd $PROJECTS_PATH/sok;docker-compose exec backend /bin/bash -c 'cd center; ./manage.py shell_plus --print-sql')"
 
-alias cmtest="(cd $PROJECTS_PATH/call-manager;docker-compose exec backend /bin/bash -c 'cd backend; python manage.py test --db-template ./scripts/test_db_template.sql')"
-alias soktest="(cd $PROJECTS_PATH/sok;docker-compose exec backend /bin/bash -c 'cd center; python manage.py test --db-template=/scripts/CI/test_db_template.sql --noinput')"
+# Test
+function cmtest {
+(cd $PROJECTS_PATH/call-manager;docker-compose exec backend /bin/bash -c "cd backend; python manage.py test --db-template ./scripts/test_db_template.sql ${1}") | toh
+}
+function cmftest {
+(cd $PROJECTS_PATH/call-manager;docker-compose exec backend /bin/bash -c "cd backend/call_manager_framework; python manage.py test --db-template ./scripts/test_db_template.sql ${1}") | toh
+}
+function soktest {
+(cd $PROJECTS_PATH/call-manager;docker-compose exec backend /bin/bash -c 'cd backend; python manage.py test --db-template ./scripts/test_db_template.sql ${1}') | toh
+}
 
-alias soklog="(cd $PROJECTS_PATH/sok;docker-compose logs -f --tail 200 backend)"
-alias cmlog="(cd $PROJECTS_PATH/call-manager;docker-compose logs -f --tail 200 backend)"
+alias soklog="(cd $PROJECTS_PATH/sok;docker-compose logs -f --tail 1000 backend | lh)"
+alias cmlog="(cd $PROJECTS_PATH/call-manager;docker-compose logs -f --tail 1000 backend | lh)"
 
 # functions
 function replace { ag -0 -l "$1" | AGR_FROM="$1" AGR_TO="$2" xargs -r0 perl -pi -e 's/$ENV{AGR_FROM}/$ENV{AGR_TO}/g'; }
-
