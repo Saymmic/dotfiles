@@ -138,7 +138,7 @@ Check the content of your H_COLORS_FG and H_COLORS_BG environment variables or u
 
 }
 
-alias i3conf="vim ~/.config/i3/config"
+alias i3conf="gedit ~/.config/i3/config"
 alias i3in="vim ~/.config/i3/dmenu.personal"
 alias m="./manage.py"
 alias xclipc='xclip -selection c'

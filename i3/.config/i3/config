@@ -225,6 +225,7 @@ bindsym $mod+y exec --no-startup-id bash ~/.config/i3/dmenu.personal | rofi -dme
 # Snippets
 bindsym $mod+Shift+o exec --no-startup-id rofi -dmenu -lines 0 -p name | xargs -I{} echo ~/dotfiles/snippets/.config/snippets/{} | xargs echo -n | xargs -0 gedit
 bindsym $mod+o exec ls ~/.config/snippets | rofi -dmenu -i -matching fuzzy -p type | xargs -I{} cat ~/.config/snippets/{} | copyq copy -
+bindsym $mod+ctrl+o exec ls ~/.config/snippets | rofi -dmenu -i -matching fuzzy -p type | xargs -I{} echo ~/.config/snippets/{} | xargs echo -n | xargs -0 gedit
 bindsym $mod+p exec copyq toggle
 
 # Autostart
