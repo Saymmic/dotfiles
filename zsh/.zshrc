@@ -67,7 +67,7 @@ POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colorize cp zsh-syntax-highlighting encode64 extract django docker docker-compose)
+plugins=(git colorize cp zsh-syntax-highlighting encode64 extract django docker docker-compose zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 

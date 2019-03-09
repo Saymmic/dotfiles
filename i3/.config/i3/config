@@ -175,7 +175,7 @@ bar
 
 
 ### MY CONFIG ###
-set $WALLPAPER ~/.wallpapers/0.png
+set $WALLPAPER ~/.wallpapers/3.png
 set $LOCK_WALLPAPER ~/.wallpapers/0.png
 
 # background conf
