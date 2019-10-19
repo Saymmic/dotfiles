@@ -59,7 +59,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+d focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -175,43 +175,32 @@ bar
 
 
 ### MY CONFIG ###
-set $WALLPAPER ~/.wallpapers/3.png
-set $LOCK_WALLPAPER ~/.wallpapers/0.png
+#set $WALLPAPER ~/.wallpapers/3.png
+#set $LOCK_WALLPAPER ~/.wallpapers/0.png
 
 # background conf
-exec_always feh --bg-center --no-xinerama $WALLPAPER
+# exec_always feh --bg-center --no-xinerama $WALLPAPER
 
 # Multiple monitor workspace
 #fake-outputs 5760x1080+0+0
 #fake-outputs 3840x1200+0+0
 
+###############################################################################
+#
+#    CUSTOM KEYBINDINGS
+#
+###############################################################################
 
-# SHORTCUTS
-bindsym $mod+x exec i3lock
-bindsym $mod+Shift+x exec i3lock && systemctl suspend	# Lock screen and suspend
-bindsym $mod+d exec rofi -show drun						                    # Rofi app launcher
+bindsym $mod+x exec gnome-screensaver-command -l
+#bindsym $mod+x exec i3lock -c 000000
+bindsym $mod+Shift+x exec i3lock && systemctl suspend	                        # Lock screen and suspend
+bindsym $mod+space exec rofi -show drun						                    # Rofi app launcher
 
-bindsym $mod+Shift+Return exec gnome-terminal --window-with-profile=day		# Day terminal (white)
+bindsym $mod+Shift+Return exec gnome-terminal --window-with-profile=day		    # Day terminal (white)
 
 # PrintScreen
 bindsym Print exec scrot '%Y-%m-%d-%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/'
 bindsym --release Shift+Print exec scrot -s -b '%Y-%m-%d-%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/Pictures/'
-
-# Custom audio control
-bindsym $mod+KP_Add exec amixer -q set Master playback 2dB+ unmute
-bindsym $mod+KP_Subtract exec amixer -q set Master playback 2dB- unmute
-bindsym $mod+KP_Multiply exec amixer -q set Master toggle
-
-# Media keys
-bindsym XF86AudioRaiseVolume exec amixer -q set Master playback 2dB+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master playback 2dB- unmute
-bindsym XF86AudioMute exec amixer -q set Master toggle
-
-# Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
 
 
 # Move the whole workspace to the next output
@@ -222,44 +211,48 @@ bindsym $mod+bracketleft move workspace to output left
 # Auto input
 bindsym $mod+y exec --no-startup-id bash ~/.config/i3/dmenu.personal | rofi -dmenu -i -matching fuzzy -p type | xargs echo -n | xargs -0 xdotool getactivewindow type --delay 80
 
+# Turn off system menu
+bindsym $mod+z exec --no-startup-id cat ~/.config/i3/dmenu.commands | rofi -dmenu -i -matching fuzzy -p type | xargs -t -n 1 -I COMMAND bash -c 'COMMAND'
+
 # Snippets
-bindsym $mod+Shift+o exec --no-startup-id rofi -dmenu -lines 0 -p name | xargs -I{} echo ~/dotfiles/snippets/.config/snippets/{} | xargs echo -n | xargs -0 gedit
-bindsym $mod+o exec ls ~/.config/snippets | rofi -dmenu -i -matching fuzzy -p type | xargs -I{} cat ~/.config/snippets/{} | copyq copy -
-bindsym $mod+ctrl+o exec ls ~/.config/snippets | rofi -dmenu -i -matching fuzzy -p type | xargs -I{} echo ~/.config/snippets/{} | xargs echo -n | xargs -0 gedit
+#bindsym $mod+Shift+o exec --no-startup-id rofi -dmenu -lines 0 -p name | xargs -I{} echo ~/dotfiles/snippets/.config/snippets/{} | xargs echo -n | xargs -0 gedit
+#bindsym $mod+o exec ls ~/.config/snippets | rofi -dmenu -i -matching fuzzy -p type | xargs -I{} cat ~/.config/snippets/{} | copyq copy -
+#bindsym $mod+ctrl+o exec ls ~/.config/snippets | rofi -dmenu -i -matching fuzzy -p type | xargs -I{} echo ~/.config/snippets/{} | xargs echo -n | xargs -0 gedit
 bindsym $mod+p exec copyq toggle
 
 # Autostart
-exec dropbox
+exec killall -q notify-osd
+#exec dropbox
 exec copyq
 exec --no-startup-id compton --config ~/.config/i3/compton.conf
-exec redshift-gtk
+# exec redshift-gtk
 exec --no-startup-id nm-applet
-exec slack
-exec google-chrome
-exec --no-startup-id i3-msg 'workspace $workspace8; exec google-chrome --new-window --app="https://www.evernote.com/Home.action?login=true";'
-exec --no-startup-id i3-msg 'workspace $workspace9; exec google-chrome --new-window --app="https://web.whatsapp.com/";'
+# exec slack
+#exec google-chrome
+#exec --no-startup-id i3-msg 'workspace $workspace8; exec google-chrome --new-window --app="https://www.evernote.com/Home.action?login=true";'
+#exec --no-startup-id i3-msg 'workspace $workspace9; exec google-chrome --new-window --app="https://web.whatsapp.com/";'
 
-exec xset s 1200			            # turn on screen saver after x
-exec xset dpms 0 0 1600     		    # turn off display after x
+# exec xset s 1200			            # turn on screen saver after x
+# exec xset dpms 0 0 1600     		    # turn off display after x
 
-exec ~/.screenlayout/triple_home.sh	    # Set displays configuration
+#exec ~/.screenlayout/triple_home.sh	    # Set displays configuration
 
 
 # Monitor and workspaces
 
-set $monitor_one HDMI-A-0
+set $monitor_one eDP-1
 # Bind the workspaces for monitor one
 workspace $workspace1 output $monitor_one
 workspace $workspace2 output $monitor_one
 workspace $workspace3 output $monitor_one
- 
-set $monitor_two DVI-D-0
+
+set $monitor_two DVI-I-1-1
 # Bind the workspaces for monitor two
 workspace $workspace4 output $monitor_two
 workspace $workspace5 output $monitor_two
 workspace $workspace6 output $monitor_two
 
-set $monitor_three DisplayPort-0
+set $monitor_three DVI-I-2-2
 # Bind the workspaces for monitor three
 workspace $workspace7 output $monitor_three
 workspace $workspace8 output $monitor_three
@@ -271,10 +264,17 @@ workspace $workspace10 output $monitor_three
 assign [class="Slack"] 					                    $workspace10
 
 # order is important
-assign [class="Google-chrome" instance="web.whatsapp.com"] 	$workspace9
-assign [class="Google-chrome" instance="evernote.com"] 	    $workspace8
-assign [class="Google-chrome"] 				                $workspace7
+#assign [class="Google-chrome" instance="web.whatsapp.com"] 	$workspace9
+#assign [class="Google-chrome" instance="evernote.com"] 	    $workspace8
+#assign [class="Google-chrome"] 				                $workspace7
 
 # Fix focus in jetbrains
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
 for_window [instance="sun-awt-X11-XWindowPeer"] border pixel 0
+
+# gnome services
+exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+exec_always --no-startup-id gnome-power-manager
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id gnome-flashback
+exec fusuma

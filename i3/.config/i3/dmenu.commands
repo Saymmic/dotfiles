@@ -1,0 +1,7 @@
+shutdown -h now
+shutdown -r
+xinput --disable 16
+subl ~/.config/i3/config
+nordvpn connect
+sudo system76-power graphics nvidia
+sudo system76-power graphics intel

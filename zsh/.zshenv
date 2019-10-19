@@ -138,8 +138,8 @@ Check the content of your H_COLORS_FG and H_COLORS_BG environment variables or u
 
 }
 
-alias i3conf="gedit ~/.config/i3/config"
-alias i3in="vim ~/.config/i3/dmenu.personal"
+alias i3conf="subl ~/.config/i3/config"
+alias i3in="subl ~/.config/i3/dmenu.personal"
 alias m="./manage.py"
 alias xclipc='xclip -selection c'
 alias zshrc="vim ~/.zshrc"
@@ -157,44 +157,18 @@ function grho {
 }
 
 # projects aliases work
-PROJECTS_PATH='/home/saymmic/PycharmProjects'
-alias pp="cd $PROJECTS_PATH"
-alias sok="cd $PROJECTS_PATH/sok"
-alias cm="cd $PROJECTS_PATH/call-manager"
-alias ecmf="cd $PROJECTS_PATH/ember-call-manager-framework"
-alias lm="cd $PROJECTS_PATH/lead-manager"
-alias aw="cd $PROJECTS_PATH/lead-manager/action-workflow"
-alias lg="cd $PROJECTS_PATH/lead-manager/lead-generator"
-alias ling="cd $PROJECTS_PATH/lingfluent"
-alias mega="cd $PROJECTS_PATH/megadictionary"
-alias rtfn="cd $PROJECTS_PATH/rtfn"
-
-function agrt {
-    ag $1 $PROJECTS_PATH/rtfn
-}
+PROJECTS_PATH='~/projects'
 
 # Bash
-alias cmbb="(cd $PROJECTS_PATH/call-manager;docker-compose exec backend /bin/bash)"
-alias sokbb="(cd $PROJECTS_PATH/sok;docker-compose exec backend /bin/bash)"
 alias cmfb="(cd $PROJECTS_PATH/call-manager;docker-compose exec frontend /bin/bash)"
 
 # Shell
-alias cmshell="(cd $PROJECTS_PATH/call-manager;docker-compose exec backend /bin/bash -c 'cd backend; ./manage.py shell_plus --print-sql')"
 alias sokshell="(cd $PROJECTS_PATH/sok;docker-compose exec backend /bin/bash -c 'cd center; ./manage.py shell_plus --print-sql')"
 
 # Test
 function cmtest {
 (cd $PROJECTS_PATH/call-manager;docker-compose exec backend /bin/bash -c "cd backend; python manage.py test --db-template ./scripts/test_db_template.sql ${1}") | toh
 }
-function cmftest {
-(cd $PROJECTS_PATH/call-manager;docker-compose exec backend /bin/bash -c "cd backend/call_manager_framework; python manage.py test --db-template ./scripts/test_db_template.sql ${1}") | toh
-}
-function soktest {
-(cd $PROJECTS_PATH/call-manager;docker-compose exec backend /bin/bash -c 'cd backend; python manage.py test --db-template ./scripts/test_db_template.sql ${1}') | toh
-}
-
-alias soklog="(cd $PROJECTS_PATH/sok;docker-compose logs -f --tail 1000 backend | lh)"
-alias cmlog="(cd $PROJECTS_PATH/call-manager;docker-compose logs -f --tail 1000 backend | lh)"
 
 # functions
 function replace { ag -0 -l "$1" | AGR_FROM="$1" AGR_TO="$2" xargs -r0 perl -pi -e 's/$ENV{AGR_FROM}/$ENV{AGR_TO}/g'; }
